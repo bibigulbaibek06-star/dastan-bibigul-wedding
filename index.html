@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дастан & Бибігүл | Үйлену тойы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark: #2c2c2c;
+            --light-bg: #fdfaf5;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Әр беттің стилі */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* 1-БЕТ: Басты фон (Сенің суретің сияқты) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        /* 2-БЕТ: Мәтін бетінің фоны (Гүлді стиль) */
+        .content-section {
+            background-image: url('https://www.transparenttextures.com/patterns/white-diamond-dark.png'); /* Нәзік текстура */
+            background-color: #fff;
+        }
+
+        /* Музыка батырмасы */
+        #music-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .music-btn {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Ерекше шрифттер */
+        .special-font {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: var(--gold);
+            margin: 10px 0;
+            line-height: 1;
+        }
+
+        .main-title {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* Таймер */
+        .timer {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .timer-item {
+            background: rgba(255,255,255,0.9);
+            color: var(--dark);
+            padding: 10px;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+        .timer-item span { display: block; font-weight: bold; font-size: 1.2rem; }
+
+        /* Анкета */
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.2);
+            max-width: 350px;
+            width: 100%;
+            border: 1px solid var(--gold);
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        button {
+            background: var(--gold);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .map-btn {
+            background: #27ae60;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="music-container">
+        <div class="music-btn" onclick="toggleMusic()" id="mBtn">🎵</div>
+        <audio id="bg-music" loop>
+            <source src="https://kzmp3.kz/uploads/music/2019/12/arnau-adaldy-k-489.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <section class="hero">
+        <div class="main-title">Үйлену тойына шақыру</div>
+        <div class="special-font" style="color: white;">Дастан</div>
+        <div style="font-size: 2rem; font-family: 'Great Vibes';">&</div>
+        <div class="special-font" style="color: white;">Бибігүл</div>
+        
+        <div class="timer" id="timer">
+            <div class="timer-item"><span id="days">0</span> күн</div>
+            <div class="timer-item"><span id="hours">0</span> сағ</div>
+            <div class="timer-item"><span id="mins">0</span> мин</div>
+            <div class="timer-item"><span id="secs">0</span> сек</div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <p style="letter-spacing: 2px;">ҚАДІРЛІ ҚОНАҚТАР!</p>
+        <p style="max-width: 320px; line-height: 1.8;">
+            Сіздерді ұлымыз <br>
+            <span class="special-font">Дастан</span> <br>
+            пен келініміз <br>
+            <span class="special-font">Бибігүлдің</span> <br>
+            үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
+        </p>
+        <div style="margin: 20px 0;">
+            <strong>Той иелері:</strong><br>
+            Омар - Райхан
+        </div>
+        <div style="border-top: 1px solid var(--gold); width: 100px; margin: 10px auto;"></div>
+        <p><strong>06 маусым 2026 жыл</strong><br>Сағат 19:00-де</p>
+    </section>
+
+    <section style="background-color: #fafafa;">
+        <h2 style="font-family: 'Playfair Display';">Тойхана</h2>
+        <p class="special-font" style="font-size: 2.5rem;">"Абубакир"</p>
+        <p>Шымкент қаласы,<br>Жиделібайсын көшесі, 68/1</p>
+        <a href="https://2gis.kz/shymkent/search/Жиделібайсын%2068%2F1" target="_blank" class="map-btn">📍 2ГИС Картамен ашу</a>
+    </section>
+
+    <section class="content-section">
+        <h2 style="font-family: 'Playfair Display';">Тойға келесіз бе?</h2>
+        <div class="form-box">
+            <form>
+                <input type="text" placeholder="Аты-жөніңіз" required>
+                <select required>
+                    <option value="" disabled selected>Жауапты таңдаңыз</option>
+                    <option value="yes">Иә, әрине келемін!</option>
+                    <option value="couple">Жұбайыммен (серігіммен) барамын</option>
+                    <option value="no">Өкінішке орай, бара алмаймын</option>
+                </select>
+                <button type="submit">Растау жіберу</button>
+            </form>
+        </div>
+        <p style="margin-top: 50px; font-size: 0.8rem; opacity: 0.6;">Күтеміз!</p>
+    </section>
+
+    <script>
+        // Музыканы басқару
+        const music = document.getElementById('bg-music');
+        const mBtn = document.getElementById('mBtn');
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                mBtn.innerText = "⏸️";
+                mBtn.style.animation = "rotate 5s linear infinite";
+            } else {
+                music.pause();
+                mBtn.innerText = "🎵";
+                mBtn.style.animation = "none";
+            }
+        }
+
+        // Таймер (06.06.2026)
+        const weddingDate = new Date("June 6, 2026 19:00:00").getTime();
+        setInterval(function() {
+            const now = new Date().getTime();
+            const dist = weddingDate - now;
+            document.getElementById("days").innerText = Math.floor(dist / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerText = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("secs").innerText = Math.floor((dist % (1000 * 60)) / 1000);
+        }, 1000);
+    </script>
+</body>
+</html>
