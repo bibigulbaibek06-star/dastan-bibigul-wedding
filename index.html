@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дастан & Бибігүл | Шақыру</title>
+    <style>
+        body { text-align: center; font-family: 'Georgia', serif; background-color: #fff5f8; color: #444; padding: 20px; margin: 0; }
+        .container { background: white; max-width: 450px; margin: 20px auto; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 2px solid #f8bbd0; }
+        h1 { color: #d81b60; font-size: 28px; }
+        .date { font-size: 20px; color: #ad1457; margin: 15px 0; font-weight: bold; }
+        #timer { font-size: 16px; background: #fce4ec; padding: 10px; border-radius: 10px; display: block; margin-top: 15px; }
+        .btn { display: inline-block; margin-top: 20px; padding: 12px 25px; background: #d81b60; color: white; text-decoration: none; border-radius: 25px; cursor: pointer; border: none; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Қадірлі ағайын-туыс, бауырлар және достар!</p>
+        <h1>Дастан & Бибігүл</h1>
+        <p>Сіздерді шаңырақ көтеру тойымыздың қадірлі қонағы болуға шақырамыз!</p>
+        <div class="date">6 маусым, 2026 жыл</div>
+        <div id="timer">Тойға дейін уақыт есептелуде...</div>
+        <br>
+        <button class="btn" onclick="toggleAudio()" id="musicBtn">🎵 Музыканы қосу</button>
+        <audio id="bgMusic" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8c8e9c5.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <script>
+        function toggleAudio() {
+            var audio = document.getElementById('bgMusic');
+            var btn = document.getElementById('musicBtn');
+            if (audio.paused) { audio.play(); btn.innerHTML = "⏸ Музыканы тоқтату"; }
+            else { audio.pause(); btn.innerHTML = "🎵 Музыканы қосу"; }
+        }
+        var countDownDate = new Date("June 6, 2026 18:00:00").getTime();
+        setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("timer").innerHTML = "Тойға: " + days + " күн " + hours + " сағат " + minutes + " минут қалды";
+        }, 1000);
+    </script>
+</bo>
+</ht>
