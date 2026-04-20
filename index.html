@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дастан & Бибігүл Шақырту</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:italic,wght@0,400;1,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #c5a059; --bg: #fffdf9; }
+        body, html { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background: var(--bg); color: #333; scroll-behavior: smooth; }
+        
+        /* Sections */
+        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; box-sizing: border-box; }
+
+        /* 1. БЕТ - БАСТЫ БЕТ */
+        .first-page {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') no-repeat center center;
+            background-size: cover; color: white;
+        }
+        .names-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(--gold); margin: 0; }
+        
+        /* 2. БЕТ - МӘТІН ЖӘНЕ КЕРІ САНАҚ */
+        .invitation-text h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 20px; }
+        .countdown { display: flex; gap: 15px; margin: 30px 0; font-family: 'Playfair Display', serif; }
+        .count-item { background: white; padding: 10px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); min-width: 60px; }
+        .count-item span { display: block; font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+
+        /* 3. БЕТ - КАЛЕНДАРЬ */
+        .calendar-card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0eadd; }
+        .calendar-table { border-collapse: collapse; margin-top: 15px; }
+        .calendar-table td { padding: 10px; text-align: center; }
+        .highlight { background: var(--gold); color: white; border-radius: 50%; font-weight: bold; }
+
+        /* 4. БЕТ - АНКЕТА */
+        .rsvp-btn { 
+            display: block; width: 100%; max-width: 300px; margin: 10px 0; padding: 15px; 
+            border: 1px solid var(--gold); border-radius: 30px; background: none; 
+            font-family: 'Montserrat', sans-serif; cursor: pointer; transition: 0.3s;
+        }
+        .rsvp-btn:hover { background: var(--gold); color: white; }
+
+        /* Музыка Батырмасы */
+        .music-toggle {
+            position: fixed; top: 20px; right: 20px; width: 50px; height: 50px;
+            background: white; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; border: 2px solid var(--gold); z-index: 1000;
+            animation: rotate 5s linear infinite; cursor: pointer;
+        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .location-btn {
+            background: var(--gold); color: white; padding: 12px 25px;
+            border-radius: 25px; text-decoration: none; display: inline-block; margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-toggle" onclick="toggleMusic()">🎵</div>
+    <audio id="bgMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <section class="first-page">
+        <p style="letter-spacing: 5px;">ШАҚЫРУ</p>
+        <h1 class="names-title">Дастан & Бибігүл</h1>
+        <p style="font-size: 1.5rem;">06.06.2026</p>
+    </section>
+
+    <section class="invitation-text">
+        <h2>Құрметті қонақтар!</h2>
+        <p style="max-width: 500px; line-height: 1.8;">
+            Ағайын-туыс, бауырлар, құда-жегжат, нағашы-жиен, бөлелер, дос-жарандар, ұжымдастар және көршілер! 
+            Сіздерді ұлымыз <b>Дастан</b> мен келініміз <b>Бибігүлдің</b> үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
+        </p>
+        
+        <div class="countdown">
+            <div class="count-item"><span id="days">0</span>күн</div>
+            <div class="count-item"><span id="hours">0</span>сағат</div>
+            <div class="count-item"><span id="minutes">0</span>мин</div>
+        </div>
+        
+        <p>Той иелері: <br><b>Омар & Райхан</b></p>
+    </section>
+
+    <section style="background: #fdfaf3;">
+        <div class="calendar-card">
+            <h3 style="font-family: 'Playfair Display';">Маусым 2026</h3>
+            <table class="calendar-table">
+                <tr><td>Дс</td><td>Сс</td><td>Ср</td><td>Бс</td><td>Жм</td><td>Сб</td><td>Жс</td></tr>
+                <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td class="highlight">6</td><td>7</td></tr>
+                <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+            </table>
+            <p>Сағат 19:00-де</p>
+            <p><b>"Абубакир" тойханасы</b></p>
+            <a href="https://2gis.kz/shymkent/geo/70000001026043653" class="location-btn">2GIS Картамен ашу</a>
+        </div>
+    </section>
+
+    <section>
+        <h2 style="font-family: 'Playfair Display';">Анкета</h2>
+        <p>Тойға келетініңізді растауыңызды сұраймыз:</p>
+        <button class="rsvp-btn" onclick="alert('Рахмет! Жауабыңыз қабылданды.')">Иә, келемін</button>
+        <button class="rsvp-btn" onclick="alert('Өкінішті, бірақ хабарлағаныңызға рахмет.')">Жоқ, бармаймын</button>
+        <button class="rsvp-btn" onclick="alert('Керемет, күтеміз!')">Жұбайыммен барамын</button>
+    </section>
+
+    <script>
+        // Кері санақ функциясы
+        const targetDate = new Date("June 6, 2026 19:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        }, 1000);
+
+        // Музыканы қосу
+        const music = document.getElementById("bgMusic");
+        function toggleMusic() {
+            if (music.paused) music.play();
+            else music.pause();
+        }
+    </script>
+</body>
+</html>
