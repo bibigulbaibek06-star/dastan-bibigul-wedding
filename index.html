@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дастан & Бибігүл | Үйлену тойы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:italic,wght@1,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059; /* Жұмсақ алтын түс */
+            --dark: #2c2c2c;
+            --cream: #fffdf9;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Әр беттің негізгі стилі */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* 1-бет: Басты бет (Табиғаттағы жұп суреті) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
+                        url('https://i.ibb.co/LzNfF8f/wedding-main.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+        }
+
+        .hero p {
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Есімдерге арналған ерекше шрифт */
+        .couple-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            color: var(--gold);
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .date-top {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        /* 2-бет: Шақыру мәтіні (Ақ фон) */
+        .invitation-text {
+            background-color: white;
+            position: relative;
+        }
+
+        /* Жүзіктер суретін фонға кірістіру */
+        .invitation-text::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: url('https://i.ibb.co/wCxM0n8/wedding-rings.jpg') no-repeat center center;
+            background-size: contain;
+            opacity: 0.1; /* Өте ашық фон */
+            z-index: 0;
+        }
+
+        .invitation-text h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: var(--dark);
+            margin-bottom: 30px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .invitation-text p {
+            line-height: 2;
+            font-size: 1.1rem;
+            max-width: 600px;
+            z-index: 1;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .name-highlight {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--gold);
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .hosts {
+            margin-top: 50px;
+            font-weight: 600;
+            color: var(--dark);
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        /* 3-бет: Уақыт және Орын (Крем түсті фон) */
+        .details {
+            background-color: var(--cream);
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+            width: 90%;
+            max-width: 450px;
+            border: 1px solid #f0eadd;
+        }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .date-box {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding: 15px 0;
+            margin: 25px 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .time-box {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .location-box strong {
+            font-size: 1.3rem;
+            color: var(--dark);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .location-box p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 2GIS Карта батырмасы */
+        .map-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            background-color: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        .map-btn:hover {
+            background-color: #b08e4f;
+            transform: translateY(-2px);
+        }
+
+        /* Музыка батырмасы (Дөңгелек, айналатын) */
+        .music-player {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .music-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+            font-size: 1.4rem;
+            color: var(--gold);
+            animation: rotate 6s linear infinite; /* Айналу анимациясы */
+            animation-play-state: paused; /* Басында тоқтап тұрады */
+        }
+
+        .music-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Мобильді құрылғыларға бейімдеу */
+        @media (max-width: 600px) {
+            .couple-names { font-size: 2.8rem; }
+            .invitation-text h2 { font-size: 2.8rem; }
+            .card { padding: 30px 20px; }
+            .date-box { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-player" onclick="toggleMusic()">
+        <div class="music-btn" id="mBtn">🎵</div>
+    </div>
+    
+    <audio id="myAudio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <section class="hero">
+        <div class="animate-on-scroll">
+            <p>Тойға шақыру</p>
+            <h1 class="couple-names">Дастан & Бибігүл</h1>
+            <p class="date-top">06.06.2026</p>
+        </div>
+    </section>
+
+    <section class="invitation-text">
+        <div class="animate-on-scroll">
+            <h2>Құрметті қонақтар!</h2>
+            <p>
+                Ағайын-туыс, бауырлар, құда-жегжат, нағашы-жиен, бөлелер, дос-жарандар, ұжымдастар және көршілер!
+            </p>
+            <p>
+                Сіздерді ұлымыз <span class="name-highlight">Дастан</span> мен келініміз <span class="name-highlight">Бибігүлдің</span> үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
+            </p>
+            <p class="hosts">
+                Той иелері:<br>
+                Омар & Райхан
+            </p>
+        </div>
+    </section>
+
+    <section class="details">
+        <div class="card animate-on-scroll">
+            <h3>Той салтанаты</h3>
+            <p>Алла бұйырса,</p>
+            <div class="date-box">06 МАУСЫМ 2026</div>
+            <p class="time-box">Сенбі, сағат 19:00-де басталады</p>
+            
+            <div class="location-box">
+                <strong>"Абубакир" тойханасы</strong>
+                <p>Шымкент қаласы,<br> Жиделібайсын көшесі, 68/1</p>
+            </div>
+            
+            <a href="https://2gis.kz/shymkent/geo/70000001026043653" target="_blank" class="map-btn">
+                КАРТАМЕН АШУ
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Музыканы басқару скрипті
+        var audio = document.getElementById("myAudio");
+        var btn = document.getElementById("mBtn");
+        var playing = false;
+
+        function toggleMusic() {
+            if (playing) {
+                audio.pause();
+                btn.style.animationPlayState = 'paused'; // Айналуды тоқтату
+                btn.innerHTML = '🔈'; // Иконканы өзгерту
+            } else {
+                audio.play().catch(function(error) {
+                    console.log("Авто-ойнату блокталуы мүмкін:", error);
+                });
+                btn.style.animationPlayState = 'running'; // Айналуды қосу
+                btn.innerHTML = '🎵'; // Иконканы өзгерту
+            }
+            playing = !playing;
+        }
+
+        // Параллакс эффект немесе жай ғана айналдыру кезіндегі анимация үшін (қосымша)
+        window.addEventListener('scroll', function() {
+            var scrolled = window.pageYOffset;
+            var hero = document.querySelector('.hero');
+            hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+        });
+    </script>
+</body>
+</html>
