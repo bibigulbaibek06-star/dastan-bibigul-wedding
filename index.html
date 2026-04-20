@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дастан & Бибігүл</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Montserrat',sans-serif;scroll-behavior:smooth;background:#000}
+.section{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;padding:20px}
+.overlay{background:rgba(0,0,0,0.55);padding:30px;border-radius:25px;backdrop-filter:blur(6px);animation:fade 1.5s}
+@keyframes fade{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+h1{font-family:'Great Vibes';font-size:60px;margin:0}
+.names{font-family:'Great Vibes';font-size:35px;color:#ffd700}
+.btn{padding:12px 22px;margin:8px;border-radius:30px;background:#fff;color:#000;font-weight:600;cursor:pointer;transition:0.3s}
+.btn:hover{background:#ffd700}
+.hero{background:url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc') center/cover}
+.second{background:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') center/cover}
+.third{background:url('https://images.unsplash.com/photo-1504198453319-5ce911bafcde') center/cover}
+.fourth{background:url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover}
+.timer{font-size:28px;margin-top:15px;color:#ffd700}
+.audio-btn{position:fixed;bottom:20px;right:20px;width:65px;height:65px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer}
+iframe{border:none;border-radius:20px;margin-top:10px}
+</style>
+</head>
+<body><!-- 1 бет --><div class="section hero">
+<div class="overlay">
+<h1>Дастан & Бибігүл</h1>
+<p>Үйлену тойына шақыру</p>
+</div>
+</div><!-- 2 бет --><div class="section second">
+<div class="overlay">
+<p>Құрметті ағайын-туыс, бауырлар,<br>Құда-жегжат, нағашы-жиен, бөлелер,<br>дос-жарандар, ұжымдастар, көршілер</p>
+<p>Сіздерді ұлымыз <span class="names">Дастан</span> мен келініміз <span class="names">Бибігүл</span>дің үйлену тойына шақырамыз!</p>
+<p>Той иелері: Омар & Райхан</p>
+</div>
+</div><!-- 3 бет --><div class="section third">
+<div class="overlay">
+<p>📅 06 маусым 2026</p>
+<p>⏰ 19:00</p>
+<p>📍 Абубакир тойханасы</p>
+<p>Жиделібайсын көшесі, 68/1, Шымкент</p>
+<div class="timer" id="timer"></div>
+</div>
+</div><!-- 4 бет карта --><div class="section fourth">
+<div class="overlay">
+<h2 style="font-family:Great Vibes;font-size:40px">Карта</h2>
+<iframe src="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" width="320" height="220"></iframe>
+<br>
+<a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" target="_blank" class="btn">Маршрут ашу</a>
+</div>
+</div><!-- 5 бет RSVP --><div class="section hero">
+<div class="overlay">
+<p>Келесіз бе?</p>
+<div class="btn" onclick="sendMsg('Иә, келемін')">Иә, келемін</div>
+<div class="btn" onclick="sendMsg('Жұбайыммен барамын')">Жұбайыммен барамын</div>
+<div class="btn" onclick="sendMsg('Бара алмаймын')">Бара алмаймын</div>
+</div>
+</div><!-- музыка --><audio id="music" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b9f42.mp3" type="audio/mp3">
+</audio>
+<div class="audio-btn" onclick="playMusic()">▶</div><script>
+function playMusic(){document.getElementById('music').play();}
+
+// таймер
+var countDownDate=new Date("June 6, 2026 19:00:00").getTime();
+setInterval(function(){
+var now=new Date().getTime();
+var d=countDownDate-now;
+var days=Math.floor(d/(1000*60*60*24));
+var hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+document.getElementById("timer").innerHTML=days+" күн "+hours+" сағат қалды";
+},1000);
+
+// WhatsApp жіберу
+function sendMsg(text){
+window.open("https://wa.me/?text="+encodeURIComponent("Тойға жауап: "+text));
+}
+// Firebase конфиг (өзің аккаунт ашып, мәндерін қоясың)
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  databaseURL: "https://YOUR_PROJECT.firebaseio.com",
+  projectId: "YOUR_PROJECT",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "",
+  appId: ""
+};
+
+// Firebase қосу
+const script1 = document.createElement('script');
+script1.src = "https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js";
+document.head.appendChild(script1);
+
+const script2 = document.createElement('script');
+script2.src = "https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js";
+document.head.appendChild(script2);
+
+script2.onload = () => {
+  firebase.initializeApp(firebaseConfig);
+};
+
+// RSVP сақтау
+function sendMsg(text){
+  let name = prompt("Атыңызды жазыңыз:");
+  if(!name) return;
+
+  firebase.database().ref("guests").push({
+    name: name,
+    response: text,
+    time: new Date().toLocaleString()
+  });
+
+  alert("Жауабыңыз сақталды 👍");
+}
+
+</script><!-- ADMIN PANEL --><div class="section second">
+<div class="overlay">
+<h2 style="font-family:Great Vibes;font-size:40px">Қонақтар тізімі</h2>
+<input type="password" id="adminPass" placeholder="Пароль" style="padding:10px;border-radius:10px;border:none">
+<div class="btn" onclick="loadGuests()">Көру</div>
+<div id="guestList" style="margin-top:15px;text-align:left;font-size:14px"></div>
+</div>
+</div><script>
+function loadGuests(){
+  const pass=document.getElementById('adminPass').value;
+  if(pass!=="1234"){
+    alert("Қате пароль ❌");
+    return;
+  }
+
+  firebase.database().ref("guests").on("value",(snapshot)=>{
+    let data=snapshot.val();
+    let html="";
+    for(let key in data){
+      html+=`<p>👤 ${data[key].name} - ${data[key].response}</p>`;
+    }
+    document.getElementById("guestList").innerHTML=html;
+  });
+}
+</script></body>
+  </html>
