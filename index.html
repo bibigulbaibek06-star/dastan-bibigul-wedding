@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дастан & Бибігүл</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* BACKGROUND */
+.section {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+/* DARK OVERLAY */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    top: 0;
+    left: 0;
+}
+
+/* TEXT */
+.content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+}
+
+.date {
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    color: gold;
+    margin: 10px 0;
+}
+
+.small-text {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* BUTTON */
+.btn {
+    padding: 10px 20px;
+    background: gold;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* TIMER */
+.timer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.box {
+    background: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* FORM */
+input, select {
+    padding: 10px;
+    width: 80%;
+    margin: 5px 0;
+    border-radius: 10px;
+    border: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+    <source src="https://dl.sndup.net/your-music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="section" style="background-image:url('https://i.ibb.co.com/Psz8rnFZ/a7e7f012628fb7263c1eca4625746b5f.jpg');">
+<div class="overlay"></div>
+<div class="content">
+    <div class="date">06.06.2026</div>
+    <div class="names">Д & Б</div>
+    <p>Үйлену тойына шақыру</p>
+    <button class="btn" onclick="document.getElementById('page2').scrollIntoView()">Ашу</button>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="section" style="background-image:url('https://i.ibb.co.com/VW8HGBFy/34b51ebe13f29becd46b672449b5000b.jpg');">
+<div class="overlay"></div>
+
+<div class="content">
+    <div class="names">Дастан & Бибігүл</div>
+
+    <p class="small-text">
+Құрметті ағайын-туыс, бауырлар, құда-жекжат, дос-жарандар!<br><br>
+
+Сіздерді ұлымыз Дастан мен келініміз Бибігүлдің<br>
+үйлену тойына арналған ақ дастарханымыздың<br>
+қадірлі қонағы болуға шақырамыз!
+    </p>
+
+    <p><b>Той иелері:</b> Омар & Райхан</p>
+
+    <p><b>06 маусым 2026</b></p>
+    <p>⏰ 19:00</p>
+
+    <div class="timer">
+        <div class="box"><span id="days"></span><br>күн</div>
+        <div class="box"><span id="hours"></span><br>сағат</div>
+        <div class="box"><span id="minutes"></span><br>минут</div>
+        <div class="box"><span id="seconds"></span><br>секунд</div>
+    </div>
+
+    <br>
+
+    <p><b>Мекен жай:</b><br>Шымкент қ. "Абубакир" тойханасы</p>
+
+    <a class="btn" href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" target="_blank">
+        Карта ашу
+    </a>
+
+    <br><br>
+
+    <button class="btn" onclick="document.getElementById('form').scrollIntoView()">Анкета толтыру</button>
+</div>
+</div>
+
+<!-- FORM -->
+<div id="form" class="section" style="background-image:url('https://i.ibb.co.com/B5SP49J3/5a9932e7dbfd49993de698428b7038dd.jpg');">
+<div class="overlay"></div>
+
+<div class="content">
+    <h2>Анкета</h2>
+
+    <input type="text" placeholder="Аты-жөніңіз"><br>
+    <input type="text" placeholder="Жұбайыңыздың аты-жөні"><br>
+
+    <select>
+        <option>Тойға келесіз бе?</option>
+        <option>Иә, келемін</option>
+        <option>Жұбайыммен келемін</option>
+        <option>Өкінішке орай келе алмаймын</option>
+    </select><br>
+
+    <button class="btn">Жіберу</button>
+
+    <p style="margin-top:20px;">
+        Келіңіздер, қуанышымызға ортақ болыңыздар 💛
+    </p>
+</div>
+</div>
+
+<!-- TIMER SCRIPT -->
+<script>
+const countDate = new Date("Jun 6, 2026 19:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = countDate - now;
+
+    document.getElementById("days").innerText = Math.floor(diff / (1000*60*60*24));
+    document.getElementById("hours").innerText = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    document.getElementById("minutes").innerText = Math.floor((diff%(1000*60*60))/(1000*60));
+    document.getElementById("seconds").innerText = Math.floor((diff%(1000*60))/1000);
+}, 1000);
+</script>
+
+</body>
+  </html>
