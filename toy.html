@@ -1,0 +1,29 @@
+<div id="music-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <button id="musicBtn" onclick="toggleMusic()" style="background: rgba(212, 175, 55, 0.8); border-radius: 50%; width: 50px; height: 50px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+        <span id="musicIcon" style="font-size: 24px;">🎵</span>
+    </button>
+    <audio id="weddingAudio" loop>
+        <source src="СІЗДІҢ_МУЗЫКАЛЫҚ_ФАЙЛҒА_СІЛТЕМЕ.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<script>
+    var music = document.getElementById("weddingAudio");
+    var btn = document.getElementById("musicBtn");
+    var icon = document.getElementById("musicIcon");
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+            icon.innerHTML = "⏸️"; // Музыка ойнап тұрғандағы белгі
+            btn.style.animation = "pulse 2s infinite";
+        } else {
+            music.pause();
+            icon.innerHTML = "🎵"; // Тоқтап тұрғандағы белгі
+            btn.style.animation = "none";
+        }
+    }
+
+    // Батырманың пульсациясы үшін стиль
+    document.head.insertAdjacentHTML('beforeend', '<style>@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }</style>');
+</script>
