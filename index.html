@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дастан & Бибігүл</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Montserrat';background:#000;color:#fff}
+.section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:30px;text-align:center}
+.box{max-width:500px}
+h1{font-family:'Playfair Display';font-size:48px;margin-bottom:10px}
+h2{font-family:'Playfair Display';font-size:28px;margin:20px 0 10px}
+p{line-height:1.6}
+.names{font-size:30px;font-family:'Playfair Display'}
+.btn{margin:8px;padding:12px 20px;border-radius:25px;background:white;color:black;cursor:pointer}
+.img-bg{background-size:cover;background-position:center}
+.timer{font-size:20px;margin-top:10px}
+iframe{border:none;border-radius:15px}
+.audio{position:fixed;bottom:20px;right:20px;background:white;color:black;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}
+</style>
+</head>
+<body><!-- БЕТ 1 --><div class="section img-bg" style="background-image:url('IMG_1.jpg')">
+<div class="box">
+<h1>Дастан & Бибігүл</h1>
+<p>Үйлену тойына шақыру</p>
+</div>
+</div><!-- БЕТ 2 --><div class="section img-bg" style="background-image:url('IMG_2.jpg')">
+<div class="box">
+<h2>Құрметті қонақтар</h2>
+<p>Сіздерді ұлымыз <span class="names">Дастан</span> мен келініміз <span class="names">Бибігүл</span>дің үйлену тойына шақырамыз</p>
+</div>
+</div><!-- БЕТ 3 --><div class="section">
+<div class="box">
+<h2>Той уақыты</h2>
+<p>06 маусым 2026</p>
+<p>Сағат 19:00</p><h2>Той иелері</h2>
+<p>Омар & Райхан</p>
+</div>
+</div><!-- БЕТ 4 --><div class="section">
+<div class="box">
+<h2>Тойхана</h2>
+<p>Абубакир тойханасы</p>
+<p>Жиделібайсын көшесі, 68/1, Шымкент</p>
+<iframe src="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" width="300" height="200"></iframe>
+</div>
+</div><!-- БЕТ 5 --><div class="section img-bg" style="background-image:url('IMG_3.jpg')">
+<div class="box">
+<h2>Тойға дейін</h2>
+<div class="timer" id="timer"></div>
+</div>
+</div><!-- БЕТ 6 --><div class="section">
+<div class="box">
+<h2>Келесіз бе?</h2>
+<input type="text" id="name" placeholder="Атыңыз" style="padding:10px;border-radius:10px;border:none;width:80%"><br>
+<div class="btn" onclick="save('Иә, келемін')">Иә, келемін</div>
+<div class="btn" onclick="save('Жұбайыммен')">Жұбайыммен</div>
+<div class="btn" onclick="save('Бармаймын')">Бармаймын</div>
+</div>
+</div><!-- музыка --><iframe id="yt" width="0" height="0" src="https://www.youtube.com/embed/0wziIVIS1Y4?autoplay=1&loop=1&playlist=0wziIVIS1Y4" allow="autoplay"></iframe>
+<div class="audio" onclick="toggle()">♫</div><script>
+let on=true;
+function toggle(){
+let yt=document.getElementById('yt');
+if(on){yt.src="";on=false;}else{yt.src="https://www.youtube.com/embed/0wziIVIS1Y4?autoplay=1&loop=1&playlist=0wziIVIS1Y4";on=true;}
+}
+
+// таймер
+let date=new Date("June 6, 2026 19:00:00").getTime();
+setInterval(()=>{
+let now=new Date().getTime();
+let d=date-now;
+let days=Math.floor(d/(1000*60*60*24));
+let hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+document.getElementById('timer').innerHTML=days+" күн "+hours+" сағат";
+},1000);
+
+// сақтау
+function save(ans){
+let name=document.getElementById('name').value;
+if(!name){alert('Атыңды жаз');return;}
+alert('Рахмет, '+name+'!');
+}
+</script></body>
+                      </html>
