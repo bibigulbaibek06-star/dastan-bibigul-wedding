@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тойға шақыру VIP</title>
+
+<style>
+body{
+margin:0;
+font-family:Georgia, serif;
+color:#fff;
+scroll-behavior:smooth;
+}
+
+/* ===== HERO ===== */
+.hero{
+height:100vh;
+background:url("https://i.ibb.co.com/Psz8rnFZ/a7e7f012628fb7263c1eca4625746b5f.jpg") center/cover no-repeat;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.6);
+}
+
+.content{
+position:relative;
+z-index:2;
+}
+
+.date{
+font-size:28px;
+color:#d4af37;
+letter-spacing:2px;
+}
+
+.names{
+font-size:65px;
+color:#ffd700;
+text-shadow:0 0 15px rgba(255,215,0,0.6);
+margin:10px 0;
+}
+
+.btn{
+padding:12px 25px;
+border:1px solid #d4af37;
+color:#fff;
+text-decoration:none;
+display:inline-block;
+margin-top:20px;
+}
+
+/* ===== SECTION ===== */
+.section{
+min-height:100vh;
+padding:50px;
+background:url("https://i.ibb.co.com/VW8HGBFy/34b51ebe13f29becd46b672449b5000b.jpg") center/cover no-repeat;
+position:relative;
+}
+
+.section::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.75);
+}
+
+.box{
+position:relative;
+z-index:2;
+text-align:center;
+max-width:900px;
+margin:auto;
+}
+
+/* ===== COUNTDOWN ===== */
+.countdown{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-top:15px;
+}
+
+.item{
+background:rgba(212,175,55,0.2);
+padding:10px;
+min-width:70px;
+border-radius:8px;
+}
+
+/* ===== FORM ===== */
+input,select{
+padding:10px;
+margin:5px;
+width:230px;
+}
+
+button{
+padding:10px 20px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+}
+
+/* hide music */
+iframe{
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== MUSIC VIP ===== -->
+<iframe
+src="https://www.youtube.com/embed?listType=search&list=Сендерге әрдайым орын бар ақ отау төріне қоныңдар&autoplay=1&loop=1"
+allow="autoplay">
+</iframe>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+<div class="content">
+
+<div class="date">06.06.2026</div>
+<div class="names">Д & Б</div>
+
+<a href="#info" class="btn">Ашу</a>
+
+</div>
+</div>
+
+<!-- ===== INFO ===== -->
+<div class="section" id="info">
+<div class="box">
+
+<h1 class="names">Дастан & Бибігүл</h1>
+
+<p>
+Құрметті ағайын-туыс, бауырлар, құда-жекжат, нағашы-жиен, бөлелер, дос-жарандар!
+<br><br>
+Сіздерді ұлымыз Дастан мен келініміз Бибігүлдің үйлену тойына шақырамыз!
+</p>
+
+<h3>Той иелері: Омар • Райхан</h3>
+
+<p>06 маусым 2026 | 19:00</p>
+
+<h3>Шымкент қаласы "Абубакир" тойханасы</h3>
+
+<a class="btn" target="_blank"
+href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424">
+Карта
+</a>
+
+<!-- ===== COUNTDOWN ===== -->
+<h3>Тойға дейін:</h3>
+<div class="countdown">
+<div class="item"><div id="d"></div>күн</div>
+<div class="item"><div id="h"></div>сағ</div>
+<div class="item"><div id="m"></div>мин</div>
+<div class="item"><div id="s"></div>сек</div>
+</div>
+
+<!-- ===== FORM ===== -->
+<h3>Анкета</h3>
+
+<form onsubmit="alert('Тіркелу қабылданды! 💛');return false;">
+<input placeholder="Аты-жөніңіз" required><br>
+<input placeholder="Жұбайыңыздың аты"><br>
+
+<select required>
+<option>Тойға келесіз бе?</option>
+<option>Иә, келемін</option>
+<option>Жұбайыммен келемін</option>
+<option>Өкінішке орай келе алмаймын</option>
+</select><br><br>
+
+<button>Жіберу</button>
+</form>
+
+<p>💛 Келіңіздер, қуанышымызға ортақ болыңыздар 💛</p>
+
+</div>
+</div>
+
+<!-- ===== COUNTDOWN SCRIPT ===== -->
+<script>
+let eventDate = new Date("2026-06-06T19:00:00").getTime();
+
+setInterval(()=>{
+let now = new Date().getTime();
+let diff = eventDate - now;
+
+document.getElementById("d").innerText = Math.floor(diff/(1000*60*60*24));
+document.getElementById("h").innerText = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+document.getElementById("m").innerText = Math.floor((diff%(1000*60*60))/(1000*60));
+document.getElementById("s").innerText = Math.floor((diff%(1000*60))/1000);
+},1000);
+</script>
+
+</body>
+  </html>
