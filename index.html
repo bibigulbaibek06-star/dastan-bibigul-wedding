@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дастан & Бибігүл — Үйлену тойы</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --white: #ffffff;
+            --text: #333333;
+            --overlay: rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+            color: var(--text);
+            scroll-behavior: smooth;
+        }
+
+        /* 1-БЛОК: НЕГІЗГІ ФОТО */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(var(--overlay), var(--overlay)), 
+                        url('https://i.ibb.co.com/CsvjY59t/813490fab7ef2a36dcf26a9a1a3d2670-1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        /* 2-БЛОК: КАЛЕНДАРЬ (ТОЙ УАҚЫТЫ БОЛАТЫН ЖЕР) */
+        .calendar-section {
+            padding: 80px 20px;
+            background: url('https://i.ibb.co.com/VW8HGBFy/34b51ebe13f29becd46b672449b5000b.jpg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .calendar-overlay {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .calendar-section h2 {
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .date-display {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #222;
+        }
+
+        /* 3-БЛОК: ТАЙМЕР */
+        .timer-section {
+            padding: 80px 20px;
+            background-color: #fdfaf2;
+        }
+
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .time-box {
+            background: white;
+            border: 1px solid var(--gold);
+            padding: 20px;
+            min-width: 80px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .time-box label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+        /* ҚОСЫМША ФОТО БЛОКТАРЫ (Галерея стилінде) */
+        .photo-strip {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .photo-strip img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* МУЗЫКА БАТЫРМАСЫ */
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: var(--gold);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+            .photo-strip { grid-template-columns: 1fr; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/07/The-Wedding-Piano-Melody.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-control" onclick="toggleMusic()">🎵</button>
+
+    <div class="hero">
+        <h1>Дастан & Бибігүл</h1>
+        <p>Үйлену тойына шақыру</p>
+    </div>
+
+    <div class="calendar-section">
+        <div class="calendar-overlay">
+            <h2>Той күні</h2>
+            <div class="date-display">
+                06.06.2026<br>
+                <span style="font-size: 1.2rem; font-weight: normal;">Сенбі, сағат 18:00</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="photo-strip">
+        <img src="https://i.ibb.co.com/sZZhx0M/Screenshot-2026-04-14-10-17-52-244-org-telegram-messenger.jpg" alt="Photo 1">
+        <img src="https://i.ibb.co.com/B5SP49J3/5a9932e7dbfd49993de698428b7038dd.jpg" alt="Photo 2">
+    </div>
+
+    <div class="timer-section">
+        <h2 style="color: var(--gold); text-align: center;">Тойға дейін қалған уақыт</h2>
+        <div class="timer-container">
+            <div class="time-box">
+                <span id="days">00</span>
+                <label>Күн</label>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <label>Сағат</label>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <label>Минут</label>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 10px;">
+        <img src="https://i.ibb.co.com/Psz8rnFZ/a7e7f012628fb7263c1eca4625746b5f.jpg" style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 10px;" alt="Photo 3">
+    </div>
+
+    <script>
+        // ТАЙМЕР ЛОГИКАСЫ
+        const weddingDate = new Date("June 6, 2026 18:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".timer-container").innerHTML = "<h3>Той басталды!</h3>";
+            }
+        }, 1000);
+
+        // МУЗЫКА ЛОГИКАСЫ
+        const music = document.getElementById("bgMusic");
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                document.getElementById("music-control").innerHTML = "⏸";
+            } else {
+                music.pause();
+                document.getElementById("music-control").innerHTML = "🎵";
+            }
+        }
+
+        // Экранды басқанда музыканы бастау (автоплей үшін)
+        window.onclick = function() {
+            if (music.paused) {
+                music.play();
+                document.getElementById("music-control").innerHTML = "⏸";
+            }
+            window.onclick = null; // Тек бір рет істеу үшін
+        };
+    </script>
+</body>
+</html>
